@@ -66,7 +66,18 @@ export default {
 
     created() {
         this.$store.dispatch('fetchCategoryList')
-    }
+    },
+
+    mounted() {
+        const {category, section} = this.$route.params
+        if (!category || !section) {
+            return
+        }   
+        this.category = category;
+        const {value} = this.$route.query
+        if (!value) return 
+        this.value = value
+    },
 }
 </script>
 
